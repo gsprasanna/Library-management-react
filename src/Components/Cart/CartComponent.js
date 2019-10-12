@@ -11,6 +11,7 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import PropTypes from "prop-types";
 
 const CartComponent = ({
   cart,
@@ -131,4 +132,10 @@ const CartComponent = ({
   );
 };
 
+CartComponent.propTypes = {
+  cart: PropTypes.array.isRequired,
+  modal: PropTypes.bool.isRequired,
+  keyboard: PropTypes.bool.isRequired,
+  backdrop: PropTypes.string.isRequired
+};
 export default CartComponent;

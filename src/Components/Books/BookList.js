@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveRoundedIcon from "@material-ui/icons/RemoveRounded";
+import PropTypes from "prop-types";
 
 import {
   Card,
@@ -18,6 +19,7 @@ const BookList = ({
   id,
   title,
   author,
+  genre,
   totalBooks,
   year,
   availability,
@@ -25,7 +27,8 @@ const BookList = ({
   book,
   handleAddToCart,
   handleRemoveFromCart,
-  cart
+  cart,
+  availableDate
 }) => {
   debugger;
   return (
@@ -33,7 +36,8 @@ const BookList = ({
       <CardImg src={image} alt={"loading"} />
       <CardBody>
         <h3>{title}</h3>
-        <CardSubtitle>Author : {author}</CardSubtitle>
+        <CardSubtitle> {`Author : ${author}`}</CardSubtitle>
+        <CardSubtitle>Genre : {genre}</CardSubtitle>
         <CardSubtitle>Year : {year}</CardSubtitle>
         <CardText>
           Availability :
@@ -43,6 +47,11 @@ const BookList = ({
             }
           >
             {availability}
+            {availability == "no" ? (
+              <CardText>{`Available on : ${availableDate}`}</CardText>
+            ) : (
+              ""
+            )}
           </strong>
         </CardText>
         {/* <CardText>
@@ -78,4 +87,13 @@ const BookList = ({
   );
 };
 
+BookList.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  year: PropTypes.number.isRequired,
+  availability: PropTypes.string.isRequired,
+  cart: PropTypes.array.isRequired,
+  book: PropTypes.object.isRequired
+};
 export default BookList;

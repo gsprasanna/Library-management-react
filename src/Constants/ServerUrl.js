@@ -1,4 +1,5 @@
-export const PRIMARY_SERVER = "http://localhost:3000";
+export const PRIMARY_SERVER =
+  "https://my-json-server.typicode.com/gsprasanna/json-server";
 
 export const GET_BOOKS = "/data";
 

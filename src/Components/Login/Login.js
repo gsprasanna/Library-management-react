@@ -106,28 +106,3 @@ const Login = ({
 };
 
 export default Login;
-
-// <div>
-//       <Form onSubmit={checkLogin}>
-//         <FormGroup>
-//           <Label for="Username">{customInputLabel}</Label>
-//           <Input
-//             type="text"
-//             name="username"
-//             placeholder={customInputPlaceholder}
-//             onChange={onUsernameChange}
-//           />
-//         </FormGroup>
-//         <FormGroup>
-//           <Label for="examplePassword">{customPasswordLabel}</Label>
-//           <Input
-//             type="password"
-//             name="password"
-//             id="examplePassword"
-//             placeholder={customPasswordPlaceholder}
-//             onChange={onPasswordChange}
-//           />
-//         </FormGroup>
-//         <Button className="btn btn-primary">Sign In</Button>
-//       </Form>
-//     </div>

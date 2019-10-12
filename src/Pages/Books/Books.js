@@ -22,6 +22,7 @@ class Books extends Component {
     const {
       bookList,
       cart,
+      availableDate,
       handleRemoveFromCart,
       handleAddToCart,
       handleSearch,
@@ -49,11 +50,13 @@ class Books extends Component {
                   title={book.title}
                   totalBooks={book.noOfBooks}
                   author={book.author}
+                  genre={book.genre}
                   year={book.yearOfPublication}
                   availability={book.availability}
                   image={book.image}
                   book={book}
                   cart={cart}
+                  availableDate={availableDate}
                   handleAddToCart={handleAddToCart}
                   handleRemoveFromCart={handleRemoveFromCart}
                 />

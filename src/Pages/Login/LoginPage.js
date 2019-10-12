@@ -35,12 +35,6 @@ class LoginPage extends Component {
     } = this.props;
     return (
       <>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Login</NavbarBrand>
-          <Nav className="ml-auto" navbar>
-            <NavItem></NavItem>
-          </Nav>
-        </Navbar>
         <h4>Smart Library</h4>
         <Login
           users={users}

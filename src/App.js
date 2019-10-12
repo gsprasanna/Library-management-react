@@ -20,13 +20,13 @@ import { GET_BOOKS, POST_BOOKS, GET_USERS } from "./Constants/ServerUrl";
 import Cart from "./Pages/Cart.js/Cart";
 import LoginPage from "./Pages/Login/LoginPage";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import { IconButton } from "@material-ui/core";
 
 class App extends Component {
   state = {
     bookList: [],
     setBookList: [],
     cart: [],
+    bookNextAvailability: "",
     isOpen: false,
     users: [],
     isAuthenticated: false,
@@ -37,29 +37,22 @@ class App extends Component {
     customPasswordLabel: "Password",
     customPasswordPlaceHolder: "Enter the Password"
   };
-  // componentDidMount() {
-  //   debugger;
-  //   const { history, location } = this.props;
-  //   if (location.pathname === "/") {
-  //     history.push(routes.books);
-  //   }
-  // }
-
-  // componentWillUpdate() {
-  //   debugger;
-  //   const { history, location } = this.props;
-  //   if (location.pathname === "/login" && this.state.isAuthenticated === true) {
-  //     history.push(routes.books);
-  //   }
-  // }
 
   componentDidMount() {
     debugger;
+    const { username, isAuthenticated } = this.state;
+    // let auth = localStorage.getItem("localAuth");
+    // if (auth != null && auth.isAuthenticated == true) {
+    //   this.setState({
+    //     username: auth.username,
+    //     isAuthenticated: auth.isAuthenticated
+    //   });
+    // }
     this.loadPostData();
     this.loadUsersData();
     const { history, location } = this.props;
     if (location.pathname === "/" && this.state.isAuthenticated === false) {
-      //history.push(routes.login);
+      history.push(routes.login);
     }
   }
 
@@ -67,7 +60,7 @@ class App extends Component {
     debugger;
     try {
       const users = await fetchData(GET_USERS, "GET");
-      console.log(users);
+      //console.log(users);
       debugger;
       this.setState({ users });
     } catch (e) {
@@ -87,17 +80,24 @@ class App extends Component {
   checkLogin = e => {
     debugger;
     e.preventDefault();
-    const { username, password, users } = this.state;
+    const { username, password, users, isAuthenticated } = this.state;
     const { history, location } = this.props;
     debugger;
     let dbUser = users.filter(user => user.name == username);
     debugger;
     if (dbUser[0].password === password) {
+      const { isAuthenticated } = this.state;
       this.setState({
         isAuthenticated: true
       });
+      let accountAuthDetails = {
+        username: this.state.username,
+        isAuthenticated: true
+      };
+      localStorage.setItem("localAuth", JSON.stringify(accountAuthDetails));
       debugger;
       history.push(routes.books);
+      // return <Redirect to={routes.books} />;
     } else {
       alert("Please enter the valid credentials");
     }
@@ -108,13 +108,14 @@ class App extends Component {
     this.setState({
       isAuthenticated: false
     });
-    this.props.history.push("/");
+    localStorage.removeItem("localAuth");
+    this.props.history.push("/login");
   };
 
   loadPostData = async () => {
     try {
       const bookList = await fetchData(GET_BOOKS, "GET");
-      console.log(bookList);
+      //console.log(bookList);
       this.setState({ bookList, setBookList: bookList });
     } catch (e) {
       console.error(e);
@@ -128,16 +129,21 @@ class App extends Component {
   };
   handleSearch = e => {
     debugger;
-    console.log(e.target.value);
+    //console.log(e.target.value);
     let currentBookList = [...this.state.bookList];
     let newBookList = [];
     if (e.target.value !== "") {
       newBookList = currentBookList.filter(item => {
         debugger;
         const lc = item.title.toLowerCase();
-        const searchedItem = e.target.value.toLowerCase();
+        const searchedItem = e.target.value;
 
-        return lc.includes(searchedItem);
+        return (
+          item.title.toLowerCase().includes(searchedItem.toLowerCase()) ||
+          item.author.toLowerCase().includes(searchedItem.toLowerCase()) ||
+          item.genre.toLowerCase().includes(searchedItem.toLowerCase()) ||
+          item.yearOfPublication.toString().includes(searchedItem.toString())
+        );
       });
     } else {
       newBookList = this.state.setBookList;
@@ -173,7 +179,7 @@ class App extends Component {
   };
 
   handleCheckOut = books => {
-    const { bookList } = this.state;
+    const { bookList, bookNextAvailability } = this.state;
     debugger;
     let filteredBooks = [];
     for (let book in books) {
@@ -182,11 +188,19 @@ class App extends Component {
         x.id === books[book].id ? (x.availability = "no") : x.availability
       );
     }
+    let todayDate = new Date();
+    let numberOfDaysToAdd = 5;
+    todayDate.setDate(todayDate.getDate() + numberOfDaysToAdd);
+    let dd = todayDate.getDate();
+    let mm = todayDate.getMonth();
+    let y = todayDate.getFullYear();
 
+    let predictedAvailaibility = dd + "/" + mm + "/" + y;
     debugger;
     this.setState({
       bookList: filteredBooks,
-      cart: []
+      cart: [],
+      bookNextAvailability: predictedAvailaibility
     });
     debugger;
 
@@ -212,7 +226,8 @@ class App extends Component {
       customInputLabel,
       customInputPlaceHolder,
       customPasswordLabel,
-      customPasswordPlaceHolder
+      customPasswordPlaceHolder,
+      bookNextAvailability
     } = this.state;
     debugger;
     return (
@@ -235,7 +250,7 @@ class App extends Component {
                   </CartIcon>
                 </NavItem>
                 <NavItem>
-                  <AccountCircle />
+                  <AccountCircle className="user-icon" />
                   <button onClick={this.signOut}>Sign out</button>
                 </NavItem>
               </Nav>
@@ -281,6 +296,7 @@ class App extends Component {
               <Books
                 bookList={bookList}
                 cart={cart}
+                availableDate={bookNextAvailability}
                 handleAddToCart={this.handleAddToCart}
                 handleRemoveFromCart={this.handleRemoveFromCart}
                 handleSearch={this.handleSearch}

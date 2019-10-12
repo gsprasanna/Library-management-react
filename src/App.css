@@ -64,3 +64,6 @@ p {
   /* width: max-content; */
   overflow: auto;
 }
+.user-icon {
+  font-size: 5.1875rem !important;
+}
