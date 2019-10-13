@@ -41,13 +41,6 @@ class App extends Component {
   componentDidMount() {
     debugger;
     const { username, isAuthenticated } = this.state;
-    // let auth = localStorage.getItem("localAuth");
-    // if (auth != null && auth.isAuthenticated == true) {
-    //   this.setState({
-    //     username: auth.username,
-    //     isAuthenticated: auth.isAuthenticated
-    //   });
-    // }
     this.loadPostData();
     this.loadUsersData();
     const { history, location } = this.props;
