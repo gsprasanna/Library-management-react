@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Library-management-react/static/css/main.79d9df91.chunk.css",
+    "main.js": "/Library-management-react/static/js/main.e5099758.chunk.js",
+    "main.js.map": "/Library-management-react/static/js/main.e5099758.chunk.js.map",
+    "runtime-main.js": "/Library-management-react/static/js/runtime-main.061f8218.js",
+    "runtime-main.js.map": "/Library-management-react/static/js/runtime-main.061f8218.js.map",
+    "static/css/2.0624914a.chunk.css": "/Library-management-react/static/css/2.0624914a.chunk.css",
+    "static/js/2.74de8bae.chunk.js": "/Library-management-react/static/js/2.74de8bae.chunk.js",
+    "static/js/2.74de8bae.chunk.js.map": "/Library-management-react/static/js/2.74de8bae.chunk.js.map",
+    "index.html": "/Library-management-react/index.html",
+    "precache-manifest.4a79c03b2e29549c02bfc497f6fe249f.js": "/Library-management-react/precache-manifest.4a79c03b2e29549c02bfc497f6fe249f.js",
+    "service-worker.js": "/Library-management-react/service-worker.js",
+    "static/css/2.0624914a.chunk.css.map": "/Library-management-react/static/css/2.0624914a.chunk.css.map",
+    "static/css/main.79d9df91.chunk.css.map": "/Library-management-react/static/css/main.79d9df91.chunk.css.map",
+    "static/media/loading.gif": "/Library-management-react/static/media/loading.81c29bc5.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.061f8218.js",
+    "static/css/2.0624914a.chunk.css",
+    "static/js/2.74de8bae.chunk.js",
+    "static/css/main.79d9df91.chunk.css",
+    "static/js/main.e5099758.chunk.js"
+  ]
+}
