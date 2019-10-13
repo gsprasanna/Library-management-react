@@ -233,7 +233,7 @@ class App extends Component {
     return (
       <div className="App">
         {isAuthenticated ? (
-          <Navbar color="light" light expand="md">
+          <Navbar color="lightgreen" light expand="md">
             <NavbarBrand to={routes.books}>Smart Library</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={isOpen} navbar>

@@ -32,6 +32,7 @@ class Books extends Component {
     return (
       <Fragment>
         <BookSearch
+          className="container"
           searchType="search"
           placeholderText="Search for Books"
           onChange={this.SearchBook}

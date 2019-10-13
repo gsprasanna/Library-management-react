@@ -67,3 +67,6 @@ p {
 .user-icon {
   font-size: 5.1875rem !important;
 }
+.badge-size {
+  font-size: 80% !important;
+}

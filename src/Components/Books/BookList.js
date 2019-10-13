@@ -4,6 +4,7 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveRoundedIcon from "@material-ui/icons/RemoveRounded";
 import PropTypes from "prop-types";
+import Badge from "react-bootstrap/Badge";
 
 import {
   Card,
@@ -32,7 +33,7 @@ const BookList = ({
 }) => {
   debugger;
   return (
-    <Card id={id} disabled={availability == "no"}>
+    <Card id={id}>
       <CardImg src={image} alt={"loading"} />
       <CardBody>
         <h3>{title}</h3>
@@ -40,15 +41,20 @@ const BookList = ({
         <CardSubtitle>Genre : {genre}</CardSubtitle>
         <CardSubtitle>Year : {year}</CardSubtitle>
         <CardText>
-          Availability :
-          <strong
-            style={
-              availability == "yes" ? { color: "green" } : { color: "red" }
-            }
-          >
-            {availability}
+          <strong>
+            {availability == "yes" ? (
+              <Badge pill variant="success" className="badge-size">
+                {`Available`}
+              </Badge>
+            ) : (
+              <Badge pill variant="danger">
+                Unavailable
+              </Badge>
+            )}
             {availability == "no" ? (
-              <CardText>{`Available on : ${availableDate}`}</CardText>
+              <Badge pill variant="danger" className="badge-size">
+                {`Available on : ${availableDate}`}
+              </Badge>
             ) : (
               ""
             )}

@@ -7,17 +7,15 @@ import { MDBCol, MDBIcon } from "mdbreact";
 const BookSearch = ({ searchType, placeholderText, onChange }) => {
   console.log();
   return (
-    <MDBCol md="6">
-      <div className="active-pink-3 active-pink-4 mb-4">
-        <input
-          className="form-control"
-          type={searchType}
-          placeholder={placeholderText}
-          aria-label="Search"
-          onChange={onChange}
-        />
-      </div>
-    </MDBCol>
+    <div className="container">
+      <input
+        className="form-control"
+        type={searchType}
+        placeholder={placeholderText}
+        aria-label="Search"
+        onChange={onChange}
+      />
+    </div>
   );
 };
 
