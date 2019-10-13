@@ -239,9 +239,6 @@ class App extends Component {
             <Collapse isOpen={isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 <NavItem>
-                  <NavLink to={routes.cart}></NavLink>
-                </NavItem>
-                <NavItem>
                   <CartIcon
                     cart={cart}
                     handleRemoveFromCart={this.handleRemoveFromCart}

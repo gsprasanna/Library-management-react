@@ -5,6 +5,7 @@ import LoadingIndicator from "../LoadingIndicator/LoadingIndicator";
 import RemoveRoundedIcon from "@material-ui/icons/RemoveRounded";
 import { NavLink } from "react-router-dom";
 import routes from "../../routes/routes";
+import { Alert } from "reactstrap";
 
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -101,13 +102,13 @@ const CartComponent = ({
           </ModalFooter>
           <ModalFooter>
             {cart.length == 3 ? (
-              <strong style={{ color: "red" }}>
+              <Alert color="danger">
                 "you have added the maximum number of books to the cart!"
-              </strong>
+              </Alert>
             ) : (
-              <strong style={{ color: "green" }}>
+              <Alert color="primary">
                 still you can add {3 - cart.length} books
-              </strong>
+              </Alert>
             )}
           </ModalFooter>
         </Modal>
