@@ -20,3 +20,53 @@
 .App-link {
   color: #09d3ac;
 }
+
+.book-list {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.book-list-item {
+  width: 30%;
+  list-style: none;
+}
+
+.thumbnail {
+  /* border: 1px solid #ddd;
+  border-radius: 4px; */
+  padding: 5px;
+  width: 150px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.card {
+  width: 280px;
+  margin-top: 10px;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+.card-img {
+  width: 280px;
+  border-radius: calc(1.25rem - 1px) !important;
+}
+p {
+  text-align: center;
+}
+.modal-content {
+  /* width: max-content; */
+  overflow: auto;
+}
+.user-icon {
+  font-size: 5.1875rem !important;
+}
+.badge-size {
+  font-size: 80% !important;
+}
